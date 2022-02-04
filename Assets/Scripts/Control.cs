@@ -8,11 +8,11 @@ namespace Scenes
 
         public void NewTurn()
         {
-            for (LinkedListNode<Command> command = commands.First;command == null; command = command.Next)
+            for (LinkedListNode<Command> node = commands.First; node == null; node = node.Next)
             {
-                if (command.Value.Tick())
+                if (node.Value.Tick())
                 {
-                    commands.Remove(command);
+                    commands.Remove(node);
                 }
             }
         }
