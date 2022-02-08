@@ -1,22 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Scenes;
 using UnityEngine;
-using Scenes.Actions;
 using Unity.VisualScripting;
-using Action = Scenes.Actions.Action;
 
-public class Command : MonoBehaviour
+public class Command
 {
     private int delay;
 
-    public int x;
-
-    public int y;
+    public Vector2 destination;
 
     public Action payload;
     // Start is called before the first frame update
-    public void Execute()
+    public void Execute(GridController gc)
     {
         Unit u = GetUnit();
         if (u == null)
@@ -25,7 +22,7 @@ public class Command : MonoBehaviour
         }
         else
         {
-            payload.Execute(u);
+            payload.Execute(u, gc);
         }
     }
     // gets an object on the location of this command. Returns 
@@ -34,11 +31,11 @@ public class Command : MonoBehaviour
         throw new NotImplementedException();
     }
     // Update is called once per frame
-    public bool Tick()
+    public bool Tick(GridController gc)
     {
         if (delay == 0)
         {
-            Execute();
+            Execute(gc);
             return true;
         }
         delay -= 1;
