@@ -18,7 +18,7 @@ public class Command
         Unit u = GetUnit();
         if (u == null)
         {
-            payload.Fail();
+            payload.Fail(gc);
         }
         else
         {

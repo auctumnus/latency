@@ -4,29 +4,35 @@ namespace Scenes.Actions
 {
     public class MoveAction : Action
     {
-        public int x;
-        public int y;
+        private int x;
+        private int y;
 
         MoveAction(int x, int y)
         {
             this.x = x;
             this.y = y;
         }
-        
-        public override void Fail()
+        public override void Fail(GridController gc)
         {
             
         }
 
         public override void Execute(Unit unit, GridController gc)
         {
-            if (gc.GETUnit(x, y))
+            Unit otherUnit = gc.GETUnit(x, y);
+            if (otherUnit == null)
             {
-                Fail();
+                gc.MoveUnit(unit.x, unit.y, x, y);
+                return;
+            }
+
+            if (otherUnit.owner == unit.owner)
+            {
+                Fail(gc);
             }
             else
             {
-                gc.MoveUnit(unit.x, unit.y, x, y);
+                
             }
         }
     }

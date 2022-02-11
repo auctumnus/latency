@@ -27,7 +27,7 @@ namespace Scenes
 
         public void MoveUnit(int x1, int y1, int x2, int y2)
         {
-            var unit = GETUnit(x1, y1);
+            Unit unit = GETUnit(x1, y1);
             SetUnit(x2, y2, unit);
             ClearUnit(x1, y1);
         }
