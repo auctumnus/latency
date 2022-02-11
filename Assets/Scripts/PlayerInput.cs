@@ -7,7 +7,7 @@ namespace Scenes
     {
         private void Update()
         {
-            var o = Orchestrator.instance;
+            var o = Orchestrator.Instance;
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 o.NewTurn();
@@ -18,7 +18,7 @@ namespace Scenes
                 int y = (int) Input.mousePosition.y;
 
                 var gridController = o.gridController;
-                var unit = gridController.getUnit(x, y);
+                var unit = gridController.GETUnit(x, y);
                 
                 if (unit && unit.owner == o.currentPlayer)
                 {

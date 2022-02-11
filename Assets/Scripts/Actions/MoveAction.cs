@@ -20,13 +20,13 @@ namespace Scenes.Actions
 
         public override void Execute(Unit unit, GridController gc)
         {
-            if (gc.getUnit(x, y))
+            if (gc.GETUnit(x, y))
             {
                 Fail();
             }
             else
             {
-                gc.moveUnit(unit.x, unit.y, x, y);
+                gc.MoveUnit(unit.x, unit.y, x, y);
             }
         }
     }

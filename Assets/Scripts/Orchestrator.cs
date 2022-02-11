@@ -5,11 +5,11 @@ namespace Scenes
 {
     public class Orchestrator : MonoBehaviour
     {
-        public static Orchestrator instance;
+        public static Orchestrator Instance;
 
         private void OnEnable()
         {
-            instance = this;
+            Instance = this;
         }
 
         public GridController gridController     = new GridController();

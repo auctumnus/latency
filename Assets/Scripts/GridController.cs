@@ -4,32 +4,32 @@ namespace Scenes
 {
     public class GridController
     {
-        public const int GRID_SIZE = 15;
+        public const int GridSize = 15;
 
-        private readonly Unit[,] units = new Unit[GRID_SIZE, GRID_SIZE];
+        private readonly Unit[,] _units = new Unit[GridSize, GridSize];
 
-        public Unit getUnit(int x, int y)
+        public Unit GETUnit(int x, int y)
         { 
-            return units[x, y];
+            return _units[x, y];
         }
 
-        public void setUnit(int x, int y, Unit unit)
+        public void SetUnit(int x, int y, Unit unit)
         {
-            units[x, y] = unit;
+            _units[x, y] = unit;
             unit.x = x;
             unit.y = y;
         }
 
-        public void clearUnit(int x, int y)
+        public void ClearUnit(int x, int y)
         {
-            units[x, y] = null;
+            _units[x, y] = null;
         }
 
-        public void moveUnit(int x1, int y1, int x2, int y2)
+        public void MoveUnit(int x1, int y1, int x2, int y2)
         {
-            var unit = getUnit(x1, y1);
-            setUnit(x2, y2, unit);
-            clearUnit(x1, y1);
+            var unit = GETUnit(x1, y1);
+            SetUnit(x2, y2, unit);
+            ClearUnit(x1, y1);
         }
     }
 }
