@@ -14,15 +14,12 @@ namespace Scenes
 
         public GridController gridController     = new GridController();
         public CommandProcessor commandProcessor = new CommandProcessor();
-        public PlayerInput p1;
-        public PlayerInput p2;
+        public PlayerInput player;
 
         public int currentPlayer = 0;
 
         public void NewTurn()
         {
-            p1.NewTurn();
-            p2.NewTurn();
             commandProcessor.NewTurn();
         }
     }

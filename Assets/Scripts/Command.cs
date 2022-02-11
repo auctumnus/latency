@@ -9,13 +9,21 @@ public class Command
 {
     private int _delay;
 
-    public Vector2 Destination;
+    public int x;
+    public int y;
 
     public Action payload;
     // Start is called before the first frame update
+    public Command(int x, int y, int delay, Action payload)
+    {
+        this.x = x;
+        this.y = y;
+        this._delay = delay;
+        this.payload = payload;
+    }
     public void Execute(GridController gc)
     {
-        Unit u = GetUnit();
+        Unit u = Orchestrator.Instance.gridController.GETUnit(x, y);
         if (u == null)
         {
             payload.Fail(gc);
@@ -24,11 +32,6 @@ public class Command
         {
             payload.Execute(u, gc);
         }
-    }
-    // gets an object on the location of this command. Returns 
-    public Unit GetUnit()
-    {
-        throw new NotImplementedException();
     }
     // Update is called once per frame
     public bool Tick(GridController gc)
