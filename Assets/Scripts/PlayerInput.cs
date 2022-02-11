@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scenes
 {
     public class PlayerInput : MonoBehaviour
     {
+        private int playerX;
+        private int playerY;
+        private List<Command> queue;
         private void Update()
         {
             var o = Orchestrator.Instance;
@@ -29,6 +33,25 @@ namespace Scenes
                     // prompt to create a moveaction if we have a selected unit
                 }
             }
+        }
+
+        public int MinimumLatency(int x, int y)
+        {
+            return MinimumLatency(x, y, playerX, playerY);
+        }
+
+        public int MinimumLatency(int x, int y, int px, int py)
+        {
+            return Math.Max(Math.Abs(x - px), Math.Abs(y - py));
+        }
+
+        public void NewTurn()
+        {
+            foreach (Command cmd in queue)
+            {
+                Orchestrator.Instance.commandProcessor.Add(cmd);   
+            }
+            queue = new List<Command>();
         }
     }
 }

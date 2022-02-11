@@ -6,8 +6,11 @@ namespace Scenes
     {
         private LinkedList<Command> commands = new LinkedList<Command>();
 
-        public void NewTurn(GridController gc)
+        public void NewTurn()
         {
+            GridController gc = Orchestrator.Instance.gridController;
+            if (commands.Count == 0)
+                return;
             for (LinkedListNode<Command> node = commands.First; node == null; node = node.Next)
             {
                 // Command.Tick() returns true if the delay is 0.
@@ -17,6 +20,11 @@ namespace Scenes
                     commands.Remove(node);
                 }
             }
+        }
+
+        public void Add(Command cmd)
+        {
+            commands.AddLast(cmd);
         }
     }
 }

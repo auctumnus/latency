@@ -7,9 +7,9 @@ using Unity.VisualScripting;
 
 public class Command
 {
-    private int delay;
+    private int _delay;
 
-    public Vector2 destination;
+    public Vector2 Destination;
 
     public Action payload;
     // Start is called before the first frame update
@@ -33,12 +33,12 @@ public class Command
     // Update is called once per frame
     public bool Tick(GridController gc)
     {
-        if (delay == 0)
+        if (_delay == 0)
         {
             Execute(gc);
             return true;
         }
-        delay -= 1;
+        _delay -= 1;
         return false;
     }
 }
