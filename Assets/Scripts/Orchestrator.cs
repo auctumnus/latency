@@ -15,6 +15,7 @@ namespace Scenes
         public GridController gridController     = new GridController();
         public CommandProcessor commandProcessor = new CommandProcessor();
         public PlayerInput player;
+        public ClickMenu menu;
 
         public int currentPlayer = 0;
 

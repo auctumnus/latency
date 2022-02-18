@@ -6,8 +6,16 @@ namespace Scenes.Actions
     {
         private int x;
         private int y;
+        private int player;
 
-        MoveAction(int x, int y)
+        public MoveAction(int x, int y, int player)
+        {
+            this.x = x;
+            this.y = y;
+            this.player = player;
+        }
+        
+        public override void Specify(int x, int y)
         {
             this.x = x;
             this.y = y;
