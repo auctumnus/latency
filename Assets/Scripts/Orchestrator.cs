@@ -17,8 +17,8 @@ namespace Scenes
         public PlayerInput player;
         public ClickMenu menu;
 
-        public int currentPlayer = 0;
-
+        public Color[] colors; // colors, corresponding to delay
+        public int colorBias = 10; // the bias
         public void NewTurn()
         {
             commandProcessor.NewTurn();

@@ -8,19 +8,35 @@ namespace Scenes
 {
     public class PlayerInput : MonoBehaviour
     {
-        private List<(int, int)> _playerPos;
+        private List<(int, int)> _playerPos = new();
         public int currentPlayer;
-        private int _numPlayers;
-        private List<Command> _queue;
-        private int _delay;
+        [SerializeField] private int numPlayers;
+        private List<Command> _queue = new();
+        public int delay;
         private Command _table;
 
+        private void Start()
+        {
+            _playerPos.Add((0, 0));
+        }
         private void Update()
         {
             var o = Orchestrator.Instance;
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 o.NewTurn();
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                delay += 1;
+                Orchestrator.Instance.gridController.Rerender();
+                Debug.Log("New delay: " + delay);
+            } else if (Input.GetKeyDown(KeyCode.DownArrow) && delay > 0)
+            {
+                delay -= 1;
+                Orchestrator.Instance.gridController.Rerender();
+                Debug.Log("New delay: " + delay);
             }
             if (Input.GetMouseButtonDown(1)) // right click opens menu and confirms orders, left click will trigger buttons
             {
@@ -30,18 +46,21 @@ namespace Scenes
                 {
                     _table.payload.Specify(x, y);
                     _queue.Add(_table);
+                    _table = null;
                 }
                 else
                 {
                     ClickMenu menu = Orchestrator.Instance.menu; // gets the menu
                     menu.gameObject.SetActive(true); // sets it to be active
+                    Debug.Log("ACTIVE");
                     menu.transform.position = Input.mousePosition; // changes its position. 
                 }
             }
         }
-
+        
         public int MinimumLatency(int x, int y)
         {
+            Debug.Log("Current player: " + currentPlayer);
             return MinimumLatency(x, y, _playerPos[currentPlayer].Item1, _playerPos[currentPlayer].Item2);
         }
 
@@ -52,7 +71,7 @@ namespace Scenes
         public void SwitchControl()
         {
             currentPlayer++;
-            if (currentPlayer == _numPlayers)
+            if (currentPlayer == numPlayers)
             {
                 currentPlayer = 0;
             }
@@ -70,11 +89,15 @@ namespace Scenes
         {
             if (payload is DefendAction)
             {
-                _queue.Add(new Command(x, y, Math.Max(MinimumLatency(x, y), _delay), payload));
+                Debug.Log("Start!!!");
+                _queue.Add(new Command(x, y, Math.Max(MinimumLatency(x, y), delay), payload));
+                Debug.Log("End!!!");
             }
             else
             {
-                _table = new Command(x, y, Math.Max(MinimumLatency(x, y), _delay), payload);   
+                Debug.Log("Start!!!");
+                _table = new Command(x, y, Math.Max(MinimumLatency(x, y), delay), payload);  
+                Debug.Log("End!!!"); 
             }
         }
     }

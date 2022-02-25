@@ -10,19 +10,19 @@ public class ClickMenu : MonoBehaviour
     private int x;
     private int y;
     [SerializeField] private PlayerInput pi;
-    void SelectMove()
+    public void SelectMove()
     {
         pi.StartOrder(x, y, new MoveAction(-1, -1, pi.currentPlayer));
         gameObject.SetActive(false);
     }
 
-    void SelectAttack()
+    public void SelectAttack()
     {
         pi.StartOrder(x, y, new AttackAction(-1, -1, pi.currentPlayer));
         gameObject.SetActive(false);
     }
 
-    void SelectDefend()
+    public void SelectDefend()
     {
         pi.StartOrder(x, y, new DefendAction(pi.currentPlayer));
         gameObject.SetActive(false);
