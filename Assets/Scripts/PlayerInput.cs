@@ -53,7 +53,10 @@ namespace Scenes
                     ClickMenu menu = Orchestrator.Instance.menu; // gets the menu
                     menu.gameObject.SetActive(true); // sets it to be active
                     Debug.Log("ACTIVE");
-                    menu.transform.position = Input.mousePosition; // changes its position. 
+                    menu.transform.position = new Vector2(x, y);
+                    //menu.transform.position = Input.mousePosition; // changes its position. 
+                    Debug.Log(x);
+                    Debug.Log(y);
                 }
             }
         }
