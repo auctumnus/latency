@@ -15,6 +15,8 @@ namespace Scenes
         public int delay;
         private Command _table;
 
+        [SerializeField] private Camera camera;
+
         private void Start()
         {
             _playerPos.Add((5, 3));
@@ -40,8 +42,9 @@ namespace Scenes
             }
             if (Input.GetMouseButtonDown(1)) // right click opens menu and confirms orders, left click will trigger buttons
             {
-                int x = (int) Input.mousePosition.x;
-                int y = (int) Input.mousePosition.y;
+                Vector2 position = camera.ScreenToWorldPoint(Input.mousePosition);
+                int x = (int) Math.Round(position.x);
+                int y = (int) Math.Round(position.y);
                 if (_table != null)
                 {
                     _table.payload.Specify(x, y);
@@ -53,7 +56,7 @@ namespace Scenes
                     ClickMenu menu = Orchestrator.Instance.menu; // gets the menu
                     menu.gameObject.SetActive(true); // sets it to be active
                     Debug.Log("ACTIVE");
-                    menu.transform.position = new Vector2(x, y);
+                    menu.transform.position = Input.mousePosition;
                     //menu.transform.position = Input.mousePosition; // changes its position. 
                 }
             }

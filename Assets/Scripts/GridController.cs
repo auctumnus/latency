@@ -18,11 +18,14 @@ namespace Scenes
 
         public void Start()
         {
+            Vector3 v = transform.position;
+            int startX = (int) v.x;
+            int startY = (int) v.y;
             for (int x = 0; x < GridSize; x++)
             {
                 for (int y = 0; y < GridSize; y++)
                 {
-                    SpriteRenderer sr = Instantiate(prefab, new Vector3(x, y), Quaternion.Euler(0, 0, 0), transform)
+                    SpriteRenderer sr = Instantiate(prefab, new Vector3(x + startX, y + startY), Quaternion.Euler(0, 0, 0))
                         .GetComponent<SpriteRenderer>();
                     _tiles[x,y] = new Tile(x, y, sr);
                 }
