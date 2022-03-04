@@ -17,7 +17,7 @@ namespace Scenes
 
         private void Start()
         {
-            _playerPos.Add((0, 0));
+            _playerPos.Add((5, 3));
         }
         private void Update()
         {
