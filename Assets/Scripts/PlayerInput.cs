@@ -32,11 +32,11 @@ namespace Scenes
             if (Input.GetKeyDown(KeyCode.RightBracket))
             {
                 delay += 1;
-                Orchestrator.Instance.gridController.Rerender();
+                Orchestrator.Instance.Rerender();
             } else if (Input.GetKeyDown(KeyCode.LeftBracket) && delay > 0)
             {
                 delay -= 1;
-                Orchestrator.Instance.gridController.Rerender();
+                Orchestrator.Instance.Rerender();
             }
             if (Input.GetMouseButtonDown(1)) // right click opens menu and confirms orders, left click will trigger buttons
             {
@@ -98,6 +98,15 @@ namespace Scenes
             else
             {
                 _table = new Command(x, y, Math.Max(MinimumLatency(x, y), delay), payload);  
+            }
+            Rerender();
+        }
+
+        public void Rerender()
+        {
+            for (int i = 0; i < _queue.Count; i++)
+            {
+                _queue[i].Render();
             }
         }
     }
