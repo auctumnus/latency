@@ -29,22 +29,21 @@ namespace Scenes
                 o.NewTurn();
             }
 
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.RightBracket))
             {
                 delay += 1;
                 Orchestrator.Instance.gridController.Rerender();
-                Debug.Log("New delay: " + delay);
-            } else if (Input.GetKeyDown(KeyCode.DownArrow) && delay > 0)
+            } else if (Input.GetKeyDown(KeyCode.LeftBracket) && delay > 0)
             {
                 delay -= 1;
                 Orchestrator.Instance.gridController.Rerender();
-                Debug.Log("New delay: " + delay);
             }
             if (Input.GetMouseButtonDown(1)) // right click opens menu and confirms orders, left click will trigger buttons
             {
                 Vector2 position = camera.ScreenToWorldPoint(Input.mousePosition);
                 int x = (int) Math.Round(position.x);
                 int y = (int) Math.Round(position.y);
+                Debug.Log("Mouse position: (" + x + ", " + y + ")");
                 if (_table != null)
                 {
                     _table.payload.Specify(x, y);
@@ -55,8 +54,10 @@ namespace Scenes
                 {
                     ClickMenu menu = Orchestrator.Instance.menu; // gets the menu
                     menu.gameObject.SetActive(true); // sets it to be active
-                    Debug.Log("ACTIVE");
-                    menu.transform.position = Input.mousePosition;
+                    var transform1 = menu.transform;
+                    Vector2 size = ((RectTransform) transform1).rect.size / 2 * transform1.localScale.x;
+                    size.y = -size.y;
+                    transform1.position = ((Vector2) Input.mousePosition) +  size;
                     //menu.transform.position = Input.mousePosition; // changes its position. 
                 }
             }
@@ -64,7 +65,6 @@ namespace Scenes
         
         public int MinimumLatency(int x, int y)
         {
-            Debug.Log("Current player: " + currentPlayer);
             return MinimumLatency(x, y, _playerPos[currentPlayer].Item1, _playerPos[currentPlayer].Item2);
         }
 
@@ -93,15 +93,11 @@ namespace Scenes
         {
             if (payload is DefendAction)
             {
-                Debug.Log("Start!!!");
                 _queue.Add(new Command(x, y, Math.Max(MinimumLatency(x, y), delay), payload));
-                Debug.Log("End!!!");
             }
             else
             {
-                Debug.Log("Start!!!");
                 _table = new Command(x, y, Math.Max(MinimumLatency(x, y), delay), payload);  
-                Debug.Log("End!!!"); 
             }
         }
     }
