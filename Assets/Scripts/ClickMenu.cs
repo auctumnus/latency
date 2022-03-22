@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class ClickMenu : MonoBehaviour
 {
-    private int x;
-    private int y;
+    public int x;
+    public int y;
     [SerializeField] private PlayerInput pi;
     [SerializeField] private Liaison li;
     public void SelectMove()

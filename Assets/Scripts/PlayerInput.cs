@@ -40,19 +40,25 @@ namespace Scenes
             }
             if (Input.GetMouseButtonDown(1)) // right click opens menu and confirms orders, left click will trigger buttons
             {
+                
                 Vector2 position = camera.ScreenToWorldPoint(Input.mousePosition);
                 int x = (int) Math.Round(position.x);
                 int y = (int) Math.Round(position.y);
-                Debug.Log("Mouse position: (" + x + ", " + y + ")");
+                
                 if (_table != null)
                 {
+                    Debug.Log("Specifying");
                     _table.payload.Specify(x, y);
                     _queue.Add(_table);
                     _table = null;
+                    Orchestrator.Instance.Rerender();
                 }
                 else
                 {
+                    Debug.Log("Putting down menu...");
                     ClickMenu menu = Orchestrator.Instance.menu; // gets the menu
+                    menu.x = x;
+                    menu.y = y;
                     menu.gameObject.SetActive(true); // sets it to be active
                     var transform1 = menu.transform;
                     Vector2 size = ((RectTransform) transform1).rect.size / 2 * transform1.localScale.x;
