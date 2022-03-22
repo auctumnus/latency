@@ -36,6 +36,12 @@ namespace Scenes
             return Instance.colors[index];
         }
 
+        public Color GetOpaqueColor(int delay)
+        {
+            Color color = GetColor(delay);
+            color.a = 1f;
+            return color;
+        }
         public void Rerender()
         {
             gridController.Rerender();

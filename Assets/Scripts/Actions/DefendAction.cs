@@ -31,7 +31,7 @@ namespace Scenes.Actions
         }
         public override void Render(int x, int y, int delay)
         {
-            tip.color = Orchestrator.Instance.GetColor(delay + 1);
+            tip.color = Orchestrator.Instance.GetOpaqueColor(delay + 1);
             Transform transform = tip.transform;
             transform.position = new Vector3(x, y);
         }

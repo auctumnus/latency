@@ -57,8 +57,8 @@ namespace Scenes.Actions
         public override void Render(int x, int y, int delay)
         {
             
-            arrow.color = Orchestrator.Instance.GetColor(delay);
-            tip.color = Orchestrator.Instance.GetColor(delay + 1);
+            arrow.color = Orchestrator.Instance.GetOpaqueColor(delay);
+            tip.color = Orchestrator.Instance.GetOpaqueColor(delay + 1);
             float magnitude = new Vector2(this.x - x, this.y - y).magnitude;
             Transform arrowTransform = arrow.transform;
             arrowTransform.localScale = new Vector3(magnitude, 0.1f, 1);
