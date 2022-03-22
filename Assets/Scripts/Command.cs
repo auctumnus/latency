@@ -18,10 +18,10 @@ public class Command
     {
         this.x = x;
         this.y = y;
-        this._delay = delay;
+        _delay = delay;
         this.payload = payload;
     }
-    public void Execute(GridController gc)
+    private void Execute(GridController gc)
     {
         Unit u = Orchestrator.Instance.gridController.GETUnit(x, y);
         if (u == null)
@@ -43,5 +43,10 @@ public class Command
         }
         _delay -= 1;
         return false;
+    }
+
+    public void Render()
+    {
+        payload.Render(x, y, _delay);
     }
 }

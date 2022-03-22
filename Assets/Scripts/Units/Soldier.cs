@@ -1,20 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Soldier : Unit
 {
     public int damage = 5;
-    public bool battleReady = false;
-    public bool hunkeredDown = false;
     public override void Battle(Unit other)
     {
         if(!other.battleReady) {
             // bonus damage!
-            other.ReceiveDamage((int) Math.floor(damage * 1.5));
+            other.ReceiveDamage((int) Math.Floor(damage * 1.5));
         } else if(other.hunkeredDown) {
             // reduce damage
-            other.ReceiveDamage((int) Math.floor(damage * 0.5));
+            other.ReceiveDamage((int) Math.Floor(damage * 0.5));
         } else {
             other.ReceiveDamage(damage);
         }

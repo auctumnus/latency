@@ -16,14 +16,7 @@ namespace Scenes
         }
         public void Redraw()
         {
-            int index =
-                Math.Max(Orchestrator.Instance.player.delay, Orchestrator.Instance.player.MinimumLatency(x, y)) +
-                Orchestrator.Instance.colorBias;
-            if (index >= Orchestrator.Instance.colors.Length)
-            {
-                index = Orchestrator.Instance.colors.Length - 1;
-            }
-            sr.color = Orchestrator.Instance.colors[index];
+            sr.color = Orchestrator.Instance.GetColor(Math.Max(Orchestrator.Instance.player.delay, Orchestrator.Instance.player.MinimumLatency(x, y)));
         }
     }
 }

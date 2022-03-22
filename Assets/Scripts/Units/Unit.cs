@@ -19,6 +19,10 @@ abstract public class Unit : MonoBehaviour
     // Units lose all preparation when moving, and gain 1 turn of preparation on attack. 
     // Units gain 2 turns of preparation when defending. 
 
+
+    public bool battleReady = false;
+    public bool hunkeredDown = false;
+
     public abstract void Battle(Unit other);
     public abstract void ReceiveDamage(int damage);
 
