@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Scenes.Actions
 {
@@ -23,8 +24,6 @@ namespace Scenes.Actions
         {
             this.x = x;
             this.y = y;
-            liaison.Delete(arrow.gameObject);
-            liaison.Delete(tip.gameObject);
         }
         public override void Fail(GridController gc)
         {
@@ -53,13 +52,11 @@ namespace Scenes.Actions
         {
             arrow.color = Orchestrator.Instance.GetColor(delay);
             tip.color = Orchestrator.Instance.GetColor(delay + 1);
-            Vector2 change = new Vector2(this.x - x, this.y - y);
-            float magnitude = change.magnitude;
-            Quaternion rotation = Quaternion.Euler(change);
+            float magnitude = new Vector2(this.x - x, this.y - y).magnitude;
             Transform arrowTransform = arrow.transform;
-            arrowTransform.localScale = new Vector3(magnitude, 1, 1);
-            arrowTransform.rotation = rotation;
-            arrowTransform.position = new Vector3(x, y);
+            arrowTransform.localScale = new Vector3(magnitude, 0.1f, 1);
+            arrowTransform.position = new Vector3(x + magnitude / 2, y + magnitude / 2);
+            arrowTransform.eulerAngles = Vector3.forward * (Mathf.Atan2(this.y - y, this.x - x) * 180f / (float) Math.PI);
             Transform tipTransform = tip.transform;
             tipTransform.position = new Vector3(this.x, this.y);
         }
