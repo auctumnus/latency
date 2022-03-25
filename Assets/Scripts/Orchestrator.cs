@@ -16,6 +16,9 @@ namespace Scenes
         public CommandProcessor commandProcessor = new CommandProcessor();
         public PlayerInput player;
         public ClickMenu menu;
+        public GameObject orderQueue;
+        public Icons icons;
+        public int willUpdate;
 
         public Color[] colors; // colors, corresponding to delay
         public int colorBias = 10; // the bias
@@ -23,6 +26,14 @@ namespace Scenes
         {
             Debug.Log("New turn... for some reason.");
             commandProcessor.NewTurn();
+        }
+
+        public void Update()
+        {
+            if(willUpdate >= 0)
+                willUpdate -= 1;
+            if (willUpdate == 0)
+                icons.Check();
         }
 
         public Color GetColor(int delay)

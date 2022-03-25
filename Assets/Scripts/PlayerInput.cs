@@ -11,9 +11,10 @@ namespace Scenes
         private List<(int, int)> _playerPos = new();
         public int currentPlayer;
         [SerializeField] private int numPlayers;
-        private List<Command> _queue = new();
+        public List<Command> queue = new();
         public int delay;
         private Command _table;
+        public Icons icons;
 
         [SerializeField] private Camera camera;
 
@@ -49,7 +50,8 @@ namespace Scenes
                 {
                     Debug.Log("Specifying");
                     _table.payload.Specify(x, y);
-                    _queue.Add(_table);
+                    queue.Add(_table);
+                    icons.Add(_table);
                     _table = null;
                     Orchestrator.Instance.Rerender();
                 }
@@ -85,11 +87,12 @@ namespace Scenes
             {
                 currentPlayer = 0;
             }
-            foreach (Command cmd in _queue)
+            foreach (Command cmd in queue)
             {
-                Orchestrator.Instance.commandProcessor.Add(cmd);   
+                if(cmd != null)
+                    Orchestrator.Instance.commandProcessor.Add(cmd);   
             }
-            _queue = new List<Command>();
+            queue = new List<Command>();
             if (currentPlayer == 0)
             {
                 Orchestrator.Instance.NewTurn();
@@ -99,7 +102,9 @@ namespace Scenes
         {
             if (payload is DefendAction)
             {
-                _queue.Add(new Command(x, y, Math.Max(MinimumLatency(x, y), delay), payload));
+                Command c = new Command(x, y, Math.Max(MinimumLatency(x, y), delay), payload);
+                queue.Add(c);
+                icons.Add(c);
             }
             else
             {
@@ -110,9 +115,10 @@ namespace Scenes
 
         public void Rerender()
         {
-            for (int i = 0; i < _queue.Count; i++)
+            foreach (Command cmd in queue)
             {
-                _queue[i].Render();
+                if(cmd != null)
+                    cmd.Render();
             }
         }
     }

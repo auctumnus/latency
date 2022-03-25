@@ -10,6 +10,7 @@ public abstract class Action
         public abstract void Specify(int x, int y);
         public SpriteRenderer arrow;
         public SpriteRenderer tip;
+        public SpriteRenderer icon;
 
         public abstract void Render(int x, int y, int delay);
 }

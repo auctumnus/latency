@@ -17,8 +17,9 @@ namespace Scenes.Actions
             this.y = y;
             this.player = player;
             this.liaison = liaison;
-            arrow = liaison.Create(liaison.attackArrowPrefab).GetComponent<SpriteRenderer>();
+            arrow = liaison.Create(liaison.arrowPrefab).GetComponent<SpriteRenderer>();
             tip = liaison.Create(liaison.attackTipPrefab).GetComponent<SpriteRenderer>();
+            
         }
         public override void Fail(GridController gc)
         {
