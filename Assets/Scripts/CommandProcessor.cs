@@ -11,11 +11,12 @@ namespace Scenes
             GridController gc = Orchestrator.Instance.gridController;
             if (commands.Count == 0)
                 return;
-            for (LinkedListNode<Command> node = commands.First; node == null; node = node.Next)
+            
+            foreach (Command node in commands)
             {
                 // Command.Tick() returns true if the delay is 0.
                 // Thus, if this if branch occurs, then the command has run.
-                if (node.Value.Tick(gc))
+                if (node.Tick(gc))
                 {
                     commands.Remove(node);
                 }
