@@ -10,15 +10,18 @@ namespace Scenes
         public void NewTurn()
         {
             GridController gc = Orchestrator.Instance.gridController;
+            Debug.Log($"{commands.Count} commands to process");
             if (commands.Count == 0)
                 return;
-            
-            foreach (Command node in commands)
+            for (LinkedListNode<Command> node = commands.First; node != null; node = node.Next)
             {
+                var command = node.Value;
+                Debug.Log($"processing {command}");
                 // Command.Tick() returns true if the delay is 0.
                 // Thus, if this if branch occurs, then the command has run.
-                if (node.Tick(gc))
+                if (command.Tick(gc))
                 {
+                    Debug.Log($"finished processing {command}, removing");
                     commands.Remove(node);
                 }
             }
