@@ -10,6 +10,11 @@ namespace Scenes.Actions
         private int y;
         private int player;
         public Liaison liaison;
+        
+        public override string ToString()
+        {
+            return $"AttackAction (at ({x}, {y}), made by player {player})";
+        }
 
         public AttackAction(int x, int y, int player, Liaison liaison)
         {

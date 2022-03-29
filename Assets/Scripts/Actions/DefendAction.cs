@@ -6,7 +6,11 @@ namespace Scenes.Actions
     {
         private int player;
         public Liaison liaison;
-
+        
+        public override string ToString()
+        {
+            return $"DefendAction (made by player {player})";
+        }
 
         public DefendAction(int player, Liaison liaison)
         {
