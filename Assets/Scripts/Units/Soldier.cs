@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Scenes;
 
 public class Soldier : Unit
 {
     public int damage = 5;
+
+    public void Start()
+    {
+        Orchestrator.Instance.gridController.SetUnit(x, y, this);
+    }
     public override void Battle(Unit other)
     {
         if(!other.battleReady) {
