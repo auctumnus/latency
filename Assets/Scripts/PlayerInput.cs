@@ -52,6 +52,7 @@ namespace Scenes
                     _table.payload.Specify(x, y);
                     queue.Add(_table);
                     icons.Add(_table);
+                    o.commandProcessor.Add(_table);
                     _table = null;
                     Orchestrator.Instance.Rerender();
                 }
