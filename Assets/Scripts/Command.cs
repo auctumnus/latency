@@ -49,4 +49,9 @@ public class Command
     {
         payload.Render(x, y, Delay);
     }
+
+    public override string ToString()
+    {
+        return String.Format("Command (delay={0}, x={1}, y={2}); payload is {3}", Delay, x, y, payload);
+    }
 }

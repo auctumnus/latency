@@ -10,6 +10,11 @@ namespace Scenes.Actions
         private int player;
         public Liaison liaison;
 
+        public override string ToString()
+        {
+            return $"MoveAction (to ({x}, {y}), made by player {player})";
+        }
+
         public MoveAction(int x, int y, int player, Liaison liaison)
         {
             this.x = x;
