@@ -5,7 +5,7 @@ namespace Scenes
 {
     public class GridController: MonoBehaviour
     {
-        public const int GridSize = 15;
+        public const int GridSize = 18;
 
         private readonly Unit[,] _units = new Unit[GridSize, GridSize];
         private readonly Tile[,] _tiles = new Tile[GridSize, GridSize];
