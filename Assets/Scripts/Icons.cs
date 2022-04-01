@@ -46,6 +46,16 @@ public class Icons: MonoBehaviour
                 input.queue.RemoveAt(i);
             }
     }
+
+    public void Clear()
+    {
+        for(int i = queue.Count - 1; i >= 0; i--)
+            {
+                Destroy(queue[i]);
+                queue.RemoveAt(i);
+            }
+        
+    }
     public void Add(Command cmd)
     {
         GameObject parent = Orchestrator.Instance.orderQueue;

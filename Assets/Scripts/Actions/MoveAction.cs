@@ -32,7 +32,6 @@ namespace Scenes.Actions
         }
         public override void Fail(GridController gc)
         {
-         
             liaison.Delete(arrow.gameObject);
             liaison.Delete(tip.gameObject);   
         }
@@ -49,6 +48,7 @@ namespace Scenes.Actions
             if (otherUnit.owner == unit.owner)
             {
                 Fail(gc);
+                return;
             }
             liaison.Delete(arrow.gameObject);
             liaison.Delete(tip.gameObject);

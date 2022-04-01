@@ -9,15 +9,15 @@ namespace Scenes.Actions
         [SerializeField] public GameObject attackTipPrefab;
         [SerializeField] public GameObject defendTipPrefab;
         [SerializeField] public GameObject moveTipPrefab;
-        public GameObject Create(GameObject gameObject)
+        public GameObject Create(GameObject toCreate)
         {
-            return Instantiate(gameObject);
+            return Instantiate(toCreate);
         }
 
-        public void Delete(GameObject gameObject)
+        public void Delete(GameObject toDestroy)
         {
             Debug.Log("Deleted something... for some reason...");
-            Destroy(gameObject);
+            Destroy(toDestroy);
         }
     }
 }

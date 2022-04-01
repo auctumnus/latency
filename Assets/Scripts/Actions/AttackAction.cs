@@ -51,18 +51,15 @@ namespace Scenes.Actions
             if (otherUnit.owner == unit.owner)
             {
                 Fail(gc);
+                return;
             }
-            else
-            {
-                unit.Battle(otherUnit);
-            }
+            unit.Battle(otherUnit);
             liaison.Delete(arrow.gameObject);
             liaison.Delete(tip.gameObject);
         }
 
         public override void Render(int x, int y, int delay)
         {
-            
             arrow.color = Orchestrator.Instance.GetOpaqueColor(delay);
             tip.color = Orchestrator.Instance.GetOpaqueColor(delay + 1);
             float magnitude = new Vector2(this.x - x, this.y - y).magnitude;

@@ -1,32 +1,45 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Scenes
 {
     public class CommandProcessor
     {
-        private LinkedList<Command> commands = new LinkedList<Command>();
+        private List<Command> commands = new();
 
         public void NewTurn()
         {
+            Orchestrator.Instance.icons.Clear();
             GridController gc = Orchestrator.Instance.gridController;
             if (commands.Count == 0)
                 return;
-            
-            foreach (Command node in commands)
+            Debug.Log("Commands length: " + commands.Count);
+            bool[] toRemove = new bool[commands.Count];
+            for (int i = 0; i < commands.Count; i++)
             {
-                // Command.Tick() returns true if the delay is 0.
-                // Thus, if this if branch occurs, then the command has run.
-                if (node.Tick(gc))
-                {
-                    commands.Remove(node);
-                }
+                bool x = commands[i].Tick(gc);
+                Debug.Log(x);
+                toRemove[i] = x;   
+            }
+            Debug.Log("Commands length: " + commands.Count);
+            for (int i = commands.Count - 1; i >= 0; i--)
+                if (toRemove[i])
+                    commands.RemoveAt(i);
+            Render();
+        }
+
+        public void Render()
+        {
+            foreach(Command cmd in commands)
+            {
+                cmd.Render();
             }
         }
 
         public void Add(Command cmd)
         {
-            commands.AddLast(cmd);
+            commands.Add(cmd);
         }
     }
 }
