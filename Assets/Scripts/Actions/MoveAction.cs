@@ -38,9 +38,11 @@ namespace Scenes.Actions
 
         public override void Execute(Unit unit, GridController gc)
         {
+            Debug.Log("running MoveAction!");
             Unit otherUnit = gc.GETUnit(x, y);
             if (otherUnit == null)
             {
+                Debug.Log("no unit in the way");
                 gc.MoveUnit(unit.x, unit.y, x, y);
                 return;
             }
