@@ -10,7 +10,7 @@ public class Soldier : Unit
 
     public void Start()
     {
-        Orchestrator.Instance.gridController.SetUnit(x, y, this);
+        Orchestrator.Instance.gridController.AddUnit(x, y, this);
     }
     public override void Battle(Unit other)
     {
@@ -28,10 +28,5 @@ public class Soldier : Unit
     public override void ReceiveDamage(int damage)
     {
         health -= damage;
-    }
-
-    public override void MoveInternal(int x, int y)
-    {
-        throw new System.NotImplementedException();
     }
 }

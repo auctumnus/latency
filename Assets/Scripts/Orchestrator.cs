@@ -26,6 +26,7 @@ namespace Scenes
         {
             Debug.Log("New turn... for some reason.");
             commandProcessor.NewTurn();
+            Rerender();
         }
 
         public void Update()
@@ -55,8 +56,8 @@ namespace Scenes
         }
         public void Rerender()
         {
-            gridController.Rerender();
             player.Rerender();
+            gridController.Rerender();
         }
     }
 }

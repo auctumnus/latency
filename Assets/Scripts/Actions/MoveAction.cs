@@ -44,6 +44,8 @@ namespace Scenes.Actions
             {
                 Debug.Log("no unit in the way");
                 gc.MoveUnit(unit.x, unit.y, x, y);
+                liaison.Delete(arrow.gameObject);
+                liaison.Delete(tip.gameObject);
                 return;
             }
 
@@ -52,6 +54,7 @@ namespace Scenes.Actions
                 Fail(gc);
                 return;
             }
+            unit.Battle(otherUnit);
             liaison.Delete(arrow.gameObject);
             liaison.Delete(tip.gameObject);
         }

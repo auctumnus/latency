@@ -22,6 +22,12 @@ abstract public class Unit : MonoBehaviour
 
     public bool battleReady = false;
     public bool hunkeredDown = false;
+    private Transform _transform;
+
+    public void Start()
+    {
+        _transform = GetComponent<SpriteRenderer>().transform;
+    }
 
     public abstract void Battle(Unit other);
     public abstract void ReceiveDamage(int damage);
@@ -31,5 +37,9 @@ abstract public class Unit : MonoBehaviour
         if (isPrepared > 0)
             isPrepared -= 1;
     }
-    public abstract void MoveInternal(int x, int y);
+
+    public void Rerender()
+    {
+        GetComponent<SpriteRenderer>().transform.position = new Vector3(x, y);
+    }
 }

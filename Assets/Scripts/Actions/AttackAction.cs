@@ -45,6 +45,8 @@ namespace Scenes.Actions
             if (otherUnit == null)
             {
                 gc.MoveUnit(unit.x, unit.y, x, y);
+                liaison.Delete(arrow.gameObject);
+                liaison.Delete(tip.gameObject);
                 return;
             }
 
