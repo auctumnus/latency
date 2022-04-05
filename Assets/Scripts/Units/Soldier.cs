@@ -8,11 +8,7 @@ public class Soldier : Unit
 {
     public int damage = 5;
     public int health = 10;
-
-    public void Start()
-    {
-        Orchestrator.Instance.gridController.SetUnit(x, y, this);
-    }
+    
     public override void Battle(Unit other)
     {
         if(!other.battleReady) {
