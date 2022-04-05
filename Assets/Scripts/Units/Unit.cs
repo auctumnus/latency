@@ -19,6 +19,12 @@ abstract public class Unit : MonoBehaviour
     
     public bool battleReady = false;
     public bool hunkeredDown = false;
+    private Transform _transform;
+
+    public void Start()
+    {
+        _transform = GetComponent<SpriteRenderer>().transform;
+    }
 
     /// <summary>
     /// How many moves a unit can make in one turn.
@@ -36,6 +42,15 @@ abstract public class Unit : MonoBehaviour
 
     public abstract void Battle(Unit other);
     public abstract void ReceiveDamage(int damage);
-    
-    public abstract void MoveInternal(int x, int y);
+
+    public void NextTurn()
+    {
+        if (isPrepared > 0)
+            isPrepared -= 1;
+    }
+
+    public void Rerender()
+    {
+        GetComponent<SpriteRenderer>().transform.position = new Vector3(x, y);
+    }
 }

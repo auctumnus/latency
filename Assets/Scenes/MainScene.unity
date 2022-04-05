@@ -1844,6 +1844,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3891133974900020603, guid: f630d0dfbd8cee24ab0b0bb6cd01210e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3891133974900020603, guid: f630d0dfbd8cee24ab0b0bb6cd01210e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1221939833
+      objectReference: {fileID: 0}
     - target: {fileID: 2032110500321641813, guid: f630d0dfbd8cee24ab0b0bb6cd01210e, type: 3}
       propertyPath: m_Name
       value: Soldier
