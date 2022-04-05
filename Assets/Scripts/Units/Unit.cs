@@ -45,8 +45,6 @@ abstract public class Unit : MonoBehaviour
 
     public void NextTurn()
     {
-        if (isPrepared > 0)
-            isPrepared -= 1;
     }
 
     public void Rerender()
