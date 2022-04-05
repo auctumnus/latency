@@ -7,6 +7,7 @@ using Scenes;
 public class Soldier : Unit
 {
     public int damage = 5;
+    public int health = 10;
 
     public void Start()
     {

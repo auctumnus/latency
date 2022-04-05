@@ -31,7 +31,7 @@ namespace Scenes.Actions
 
         public override void Execute(Unit unit, GridController gc)
         {
-            unit.isPrepared = 2;
+            unit.hunkeredDown = true;
         }
         public override void Render(int x, int y, int delay)
         {

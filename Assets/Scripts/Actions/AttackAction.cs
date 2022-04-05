@@ -40,7 +40,7 @@ namespace Scenes.Actions
 
         public override void Execute(Unit unit, GridController gc)
         {
-            unit.isPrepared = 0;
+            unit.battleReady = true;
             Unit otherUnit = gc.GETUnit(x, y);
             if (otherUnit == null)
             {
