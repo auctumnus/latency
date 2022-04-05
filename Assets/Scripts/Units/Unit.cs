@@ -15,21 +15,19 @@ abstract public class Unit : MonoBehaviour
     public int damage;
     public int health;
     public int owner;
-    public int isPrepared; // number of turns the unit is prepared for. 
-    // Units lose all preparation when moving, and gain 1 turn of preparation on attack. 
-    // Units gain 2 turns of preparation when defending. 
-
 
     public bool battleReady = false;
     public bool hunkeredDown = false;
 
+    /// <summary>
+    /// How many moves a unit can make in one turn.
+    /// </summary>
+    public int staminaCapacity = 1;
+
+    public int currentStamina = 1;
+
     public abstract void Battle(Unit other);
     public abstract void ReceiveDamage(int damage);
-
-    public void NextTurn()
-    {
-        if (isPrepared > 0)
-            isPrepared -= 1;
-    }
+    
     public abstract void MoveInternal(int x, int y);
 }
