@@ -15,7 +15,7 @@ abstract public class Unit : MonoBehaviour
     public int damage;
     public int health;
     public int owner;
-
+    
     public bool battleReady = false;
     public bool hunkeredDown = false;
 
@@ -23,7 +23,9 @@ abstract public class Unit : MonoBehaviour
     /// How many moves a unit can make in one turn.
     /// </summary>
     public int staminaCapacity = 1;
-
+    /// <summary>
+    /// Amount of moves left this unit can make.
+    /// </summary>
     public int currentStamina = 1;
 
     public abstract void Battle(Unit other);
