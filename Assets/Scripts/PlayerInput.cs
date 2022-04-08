@@ -36,8 +36,6 @@ namespace Scenes
                 return;
             if (Input.GetKeyDown(KeyCode.RightBracket))
             {
-                willAcceptInput = true;
-                Orchestrator.Instance.panel.SetActive(false);
                 delay += 1;
                 Orchestrator.Instance.Rerender();
             } else if (Input.GetKeyDown(KeyCode.LeftBracket) && delay > 0)
@@ -93,7 +91,6 @@ namespace Scenes
         }
         public void SwitchControl()
         {
-            delay = 0;
             willAcceptInput = false;
             Orchestrator.Instance.panel.SetActive(true);
             Orchestrator.Instance.liaison.NextPlayer();
@@ -113,6 +110,8 @@ namespace Scenes
                 Orchestrator.Instance.NewTurn();
             }
             icons.Clear();
+            delay = 0;
+            Orchestrator.Instance.Rerender();
         }
         public void StartOrder(int x, int y, Action payload)
         {

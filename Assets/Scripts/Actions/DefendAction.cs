@@ -32,6 +32,8 @@ namespace Scenes.Actions
         public override void Execute(Unit unit, GridController gc)
         {
             unit.hunkeredDown = true;
+            liaison.Delete(arrow.gameObject);
+            liaison.Delete(tip.gameObject);
         }
         public override void Render(int x, int y, int delay)
         {
