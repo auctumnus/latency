@@ -13,6 +13,13 @@ namespace Scenes
         private Transform _cameraTransform;
         void Update()
         {
+            float sensitivity = this.sensitivity;
+            float moveSensitivity = this.moveSensitivity;
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                sensitivity *= 0.1f;
+                moveSensitivity *= 0.1f;
+            }
             if (Input.GetKey(KeyCode.Minus))
             {
                 zoomLevel += sensitivity;
