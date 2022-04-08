@@ -34,11 +34,6 @@ abstract public class Unit : MonoBehaviour
     /// Amount of moves left this unit can make.
     /// </summary>
     public int currentStamina = 1;
-    
-    public void Start()
-    {
-        Orchestrator.Instance.gridController.SetUnit(x, y, this);
-    }
 
     public abstract void Battle(Unit other);
     public abstract void ReceiveDamage(int damage);
