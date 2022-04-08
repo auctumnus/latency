@@ -10,7 +10,6 @@ namespace Scenes
 
         public void NewTurn()
         {
-            Orchestrator.Instance.icons.Clear();
             GridController gc = Orchestrator.Instance.gridController;
             Debug.Log($"{commands.Count} commands to process");
             if (commands.Count == 0)

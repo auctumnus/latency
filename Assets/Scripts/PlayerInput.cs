@@ -17,27 +17,38 @@ namespace Scenes
         public Icons icons;
 
         [SerializeField] private Camera camera;
-
+        private bool willAcceptInput;
         private void Start()
         {
+            Orchestrator.Instance.liaison.SetPlayers(2);
             _playerPos.Add((5, 3));
+            _playerPos.Add((0, 0));
         }
         private void Update()
         {
-            var o = Orchestrator.Instance;
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.C))
             {
-                SwitchControl();
+                willAcceptInput = true;
+                Orchestrator.Instance.panel.SetActive(false);
             }
-
+            
+            if (!willAcceptInput)
+                return;
             if (Input.GetKeyDown(KeyCode.RightBracket))
             {
+                willAcceptInput = true;
+                Orchestrator.Instance.panel.SetActive(false);
                 delay += 1;
                 Orchestrator.Instance.Rerender();
             } else if (Input.GetKeyDown(KeyCode.LeftBracket) && delay > 0)
-            {
-                delay -= 1;
+            { 
+                delay -= 1; 
                 Orchestrator.Instance.Rerender();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                SwitchControl();
             }
             if (Input.GetMouseButtonDown(1)) // right click opens menu and confirms orders, left click will trigger buttons
             {
@@ -82,6 +93,10 @@ namespace Scenes
         }
         public void SwitchControl()
         {
+            delay = 0;
+            willAcceptInput = false;
+            Orchestrator.Instance.panel.SetActive(true);
+            Orchestrator.Instance.liaison.NextPlayer();
             currentPlayer++;
             if (currentPlayer == numPlayers)
             {
@@ -97,6 +112,7 @@ namespace Scenes
             {
                 Orchestrator.Instance.NewTurn();
             }
+            icons.Clear();
         }
         public void StartOrder(int x, int y, Action payload)
         {
