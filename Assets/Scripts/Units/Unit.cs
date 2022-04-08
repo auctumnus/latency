@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 [RequireComponent(typeof(SpriteRenderer))]
 abstract public class Unit : MonoBehaviour
@@ -14,6 +16,7 @@ abstract public class Unit : MonoBehaviour
 
     public int damage;
     public int health;
+    public TMP_Text HealthText;
     public int owner;
     
     public bool battleReady = false;
@@ -23,6 +26,12 @@ abstract public class Unit : MonoBehaviour
     public void Start()
     {
         _transform = GetComponent<SpriteRenderer>().transform;
+        //HealthText = GetComponent<TextMeshPro>();    
+    }
+
+    public void Update()
+    {
+        HealthText.text = health.ToString();
     }
 
     /// <summary>
