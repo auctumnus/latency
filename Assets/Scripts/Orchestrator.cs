@@ -1,5 +1,7 @@
 ﻿using System;
+using Scenes.Actions;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Scenes
 {
@@ -18,13 +20,14 @@ namespace Scenes
         public ClickMenu menu;
         public GameObject orderQueue;
         public Icons icons;
+        public Liaison liaison;
         public int willUpdate;
+        public GameObject panel;
 
         public Color[] colors; // colors, corresponding to delay
         public int colorBias = 10; // the bias
         public void NewTurn()
         {
-            Debug.Log("New turn... for some reason.");
             commandProcessor.NewTurn();
             Rerender();
         }
