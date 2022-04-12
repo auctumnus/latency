@@ -43,7 +43,12 @@ namespace Scenes.Actions
             if (otherUnit == null)
             {
                 Debug.Log("no unit in the way");
-                gc.MoveUnit(unit.x, unit.y, x, y);
+                if (unit.CanMove(x, y))
+                {
+                    gc.MoveUnit(unit.x, unit.y, x, y);
+                    unit.Move(x, y);
+                }
+
                 liaison.Delete(arrow.gameObject);
                 liaison.Delete(tip.gameObject);
                 return;
@@ -54,7 +59,8 @@ namespace Scenes.Actions
                 Fail(gc);
                 return;
             }
-            unit.Battle(otherUnit);
+            if(unit.CanMove(x, y))
+                unit.SurpriseAttack(x, y, otherUnit);
             liaison.Delete(arrow.gameObject);
             liaison.Delete(tip.gameObject);
         }

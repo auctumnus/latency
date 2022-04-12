@@ -2082,6 +2082,14 @@ PrefabInstance:
       propertyPath: y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5873397728136080091, guid: f630d0dfbd8cee24ab0b0bb6cd01210e, type: 3}
+      propertyPath: currentStamina
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873397728136080091, guid: f630d0dfbd8cee24ab0b0bb6cd01210e, type: 3}
+      propertyPath: staminaCapacity
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8831534163436179614, guid: f630d0dfbd8cee24ab0b0bb6cd01210e, type: 3}
       propertyPath: m_RootOrder
       value: 8

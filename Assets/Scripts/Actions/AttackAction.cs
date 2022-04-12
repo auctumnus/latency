@@ -44,6 +44,7 @@ namespace Scenes.Actions
             Unit otherUnit = gc.GETUnit(x, y);
             if (otherUnit == null)
             {
+                unit.currentStamina = 0; // penalty for attacking at the wrong time
                 gc.MoveUnit(unit.x, unit.y, x, y);
                 liaison.Delete(arrow.gameObject);
                 liaison.Delete(tip.gameObject);
@@ -55,7 +56,11 @@ namespace Scenes.Actions
                 Fail(gc);
                 return;
             }
-            unit.Battle(otherUnit);
+
+            if (unit.CanAttack(x, y))
+            {
+                unit.Attack(x, y, otherUnit);
+            }
             liaison.Delete(arrow.gameObject);
             liaison.Delete(tip.gameObject);
         }

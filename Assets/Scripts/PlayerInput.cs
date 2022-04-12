@@ -20,9 +20,10 @@ namespace Scenes
         private bool willAcceptInput;
         private void Start()
         {
-            Orchestrator.Instance.liaison.SetPlayers(2);
             _playerPos.Add((5, 3));
             _playerPos.Add((0, 0));
+            Orchestrator.Instance.commandProcessor.Init(2);
+            Orchestrator.Instance.liaison.SetPlayers(2);
         }
         private void Update()
         {
@@ -117,13 +118,13 @@ namespace Scenes
         {
             if (payload is DefendAction)
             {
-                Command c = new Command(x, y, Math.Max(MinimumLatency(x, y), delay), payload);
+                Command c = new Command(x, y, Math.Max(MinimumLatency(x, y), delay), payload, currentPlayer);
                 queue.Add(c);
                 icons.Add(c);
             }
             else
             {
-                _table = new Command(x, y, Math.Max(MinimumLatency(x, y), delay), payload);  
+                _table = new Command(x, y, Math.Max(MinimumLatency(x, y), delay), payload, currentPlayer);  
             }
             Rerender();
         }

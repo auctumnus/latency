@@ -48,6 +48,20 @@ namespace Scenes
             for (int x = toRemove.Length - 1; x >= 0; x--)
                 if(toRemove[x])
                     _unitQueue.RemoveAt(x);
+            foreach (Unit unit in _unitQueue)
+                if (unit.owner == Orchestrator.Instance.player.currentPlayer)
+                    unit.GetComponent<SpriteRenderer>().color = Color.white;
+                else
+                    unit.GetComponent<SpriteRenderer>().color = Color.red;
+        }
+
+        public void ResetStamina(int player)
+        {
+            foreach (Unit unit in _unitQueue)
+            {
+                if (unit.owner == player)
+                    unit.currentStamina = unit.staminaCapacity;
+            }
         }
 
         public void SetUnit(int x, int y, Unit unit)

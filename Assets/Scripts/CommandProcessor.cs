@@ -6,40 +6,46 @@ namespace Scenes
 {
     public class CommandProcessor
     {
-        private List<Command> commands = new();
+        private List<List<Command>> commands = new();
 
         public void NewTurn()
         {
             GridController gc = Orchestrator.Instance.gridController;
-            Debug.Log($"{commands.Count} commands to process");
-            if (commands.Count == 0)
-                return;
-            Debug.Log("Commands length: " + commands.Count);
-            bool[] toRemove = new bool[commands.Count];
-            for (int i = 0; i < commands.Count; i++)
+            for (int player = 0; player < commands.Count; player++)
             {
-                bool x = commands[i].Tick(gc);
-                Debug.Log(x);
-                toRemove[i] = x;   
+                gc.ResetStamina(player);
+                bool[] toRemove = new bool[commands[player].Count];
+                for (int i = 0; i < commands[player].Count; i++)
+                {
+                    bool x = commands[player][i].Tick(gc);
+                    Debug.Log(x);
+                    toRemove[i] = x;
+                }
+
+                Debug.Log("Commands length: " + commands.Count);
+                for (int i = commands[player].Count - 1; i >= 0; i--)
+                    if (toRemove[i])
+                        commands[player].RemoveAt(i);
             }
-            Debug.Log("Commands length: " + commands.Count);
-            for (int i = commands.Count - 1; i >= 0; i--)
-                if (toRemove[i])
-                    commands.RemoveAt(i);
             Render();
+            
         }
 
+        public void Init(int numPlayers)
+        {
+            for(int i = 0; i < numPlayers; i++)
+            commands.Add(new List<Command>());
+        }
         public void Render()
         {
-            foreach(Command cmd in commands)
-            {
-                cmd.Render();
-            }
+            foreach(List<Command> commands in commands)
+                foreach(Command cmd in commands)
+                    cmd.Render();
         }
 
         public void Add(Command cmd)
         {
-            commands.Add(cmd);
+            commands[cmd.player].Add(cmd);
         }
     }
 }

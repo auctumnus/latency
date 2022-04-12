@@ -11,20 +11,22 @@ public class Command
 
     public int x;
     public int y;
+    public int player;
 
     public Action payload;
     // Start is called before the first frame update
-    public Command(int x, int y, int delay, Action payload)
+    public Command(int x, int y, int delay, Action payload, int player)
     {
         this.x = x;
         this.y = y;
         Delay = delay;
         this.payload = payload;
+        this.player = player;
     }
     private void Execute(GridController gc)
     {
         Unit u = Orchestrator.Instance.gridController.GETUnit(x, y);
-        if (u == null)
+        if (u == null || u.owner != player)
         {
             payload.Fail(gc);
         }

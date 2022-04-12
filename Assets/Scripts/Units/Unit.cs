@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 
 [RequireComponent(typeof(SpriteRenderer))]
-abstract public class Unit : MonoBehaviour
+public abstract class Unit : MonoBehaviour
 {
     [SerializeField]
     private SpriteRenderer _renderer;
@@ -44,9 +44,25 @@ abstract public class Unit : MonoBehaviour
         HealthText.text = health.ToString();
     }
 
-   
+    public abstract bool CanMove(int x, int y);
+    public abstract void Move(int x, int y);
+    public abstract bool CanAttack(int x, int y);
+    // returns true if the battle was won
+    public abstract bool Attack(int x, int y, Unit unit);
 
-    public abstract void Battle(Unit other);
+    public virtual bool CanDefend()
+    {
+        return currentStamina != 0;
+    }
+
+    public virtual void Defend()
+    {
+        currentStamina = 0;
+        hunkeredDown = true;
+    }
+    // returns true if the battle was won
+    public abstract bool SurpriseAttack(int x, int y, Unit other);
+    public abstract void Defend(Unit other);
     public abstract void ReceiveDamage(int damage);
 
     public void NextTurn()
