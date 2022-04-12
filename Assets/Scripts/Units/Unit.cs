@@ -23,6 +23,15 @@ abstract public class Unit : MonoBehaviour
     public bool battleReady = false;
     public bool hunkeredDown = false;
     private Transform _transform;
+    
+    /// <summary>
+    /// How many moves a unit can make in one turn.
+    /// </summary>
+    public int staminaCapacity = 1;
+    /// <summary>
+    /// Amount of moves left this unit can make.
+    /// </summary>
+    public int currentStamina = 1;
 
     public void Start()
     {
@@ -35,14 +44,7 @@ abstract public class Unit : MonoBehaviour
         HealthText.text = health.ToString();
     }
 
-    /// <summary>
-    /// How many moves a unit can make in one turn.
-    /// </summary>
-    public int staminaCapacity = 1;
-    /// <summary>
-    /// Amount of moves left this unit can make.
-    /// </summary>
-    public int currentStamina = 1;
+   
 
     public abstract void Battle(Unit other);
     public abstract void ReceiveDamage(int damage);
