@@ -66,6 +66,18 @@ namespace Scenes.Actions
             {
                 unit.Attack(x, y, otherUnit);
             }
+
+            if (otherUnit.health <= 0)
+            {
+                liaison.Delete(otherUnit.gameObject);
+                gc.MoveUnit(unit.x, unit.y, x, y);
+                unit.x = x;
+                unit.y = y;
+                unit.Rerender();
+            }
+
+            if(unit.health <= 0) 
+                liaison.Delete(unit.gameObject);
             liaison.Delete(arrow.gameObject);
             liaison.Delete(tip.gameObject);
         }

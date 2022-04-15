@@ -44,11 +44,9 @@ public class Soldier : Unit
     {
         return currentStamina > 0 && math.abs(this.x - x) <= 1 && math.abs(this.y - y) <= 1;
     }
-    public override bool Attack(int x,  int y, Unit other)
+    public override bool Attack(int _1,  int _, Unit other)
     {
         currentStamina -= 1;
-        this.x = x;
-        this.y = y;
         battleReady = true;
         if (other.hunkeredDown)
         {

@@ -88,7 +88,7 @@ namespace Scenes
 
         public int MinimumLatency(int x, int y, int px, int py)
         {
-            return Math.Max(Math.Abs(x - px), Math.Abs(y - py));
+            return (Math.Max(Math.Abs(x - px), Math.Abs(y - py)) + 1 ) / 2;
         }
         public void SwitchControl()
         {
