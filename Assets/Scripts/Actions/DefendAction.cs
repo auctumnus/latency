@@ -19,7 +19,6 @@ namespace Scenes.Actions
             arrow = liaison.Create(liaison.arrowPrefab).GetComponent<SpriteRenderer>();
             tip = liaison.Create(liaison.defendTipPrefab).GetComponent<SpriteRenderer>();
         }
-        
         public override void Specify(int x, int y)
         {
         }

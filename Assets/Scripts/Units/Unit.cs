@@ -33,7 +33,7 @@ public abstract class Unit : MonoBehaviour
     /// </summary>
     public int currentStamina = 1;
 
-    public void Start()
+    public virtual void Start()
     {
         _transform = GetComponent<SpriteRenderer>().transform;
         //HealthText = GetComponent<TextMeshPro>();    
@@ -45,7 +45,12 @@ public abstract class Unit : MonoBehaviour
     }
 
     public abstract bool CanMove(int x, int y);
-    public abstract void Move(int x, int y);
+    public virtual void Move(int x,  int y)
+    {
+        currentStamina -= 1;
+        this.x = x;
+        this.y = y;
+    }
     public abstract bool CanAttack(int x, int y);
     // returns true if the battle was won
     public abstract bool Attack(int x, int y, Unit unit);

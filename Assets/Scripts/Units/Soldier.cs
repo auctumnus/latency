@@ -7,11 +7,7 @@ using Unity.Mathematics;
 
 public class Soldier : Unit
 {
-    public int damage = 5;
-    public int health = 10;
-    
-
-    public void Start()
+    public override void Start()
     {
         Orchestrator.Instance.gridController.AddUnit(x, y, this);
     }
@@ -43,16 +39,12 @@ public class Soldier : Unit
             other.ReceiveDamage(damage);
         }
     }
-    public override void Move(int x,  int y)
-    {
-        currentStamina -= 1;
-        this.x = x;
-        this.y = y;
-    }
+    
     public override bool CanMove(int x, int y)
     {
         return currentStamina > 0 && math.abs(this.x - x) <= 1 && math.abs(this.y - y) <= 1;
-    }public override bool Attack(int x,  int y, Unit other)
+    }
+    public override bool Attack(int x,  int y, Unit other)
     {
         currentStamina -= 1;
         this.x = x;

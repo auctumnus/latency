@@ -20,8 +20,8 @@ namespace Scenes
         private bool willAcceptInput;
         private void Start()
         {
-            _playerPos.Add((5, 3));
-            _playerPos.Add((0, 0));
+            _playerPos.Add((9, 0));
+            _playerPos.Add((9, 18));
             Orchestrator.Instance.commandProcessor.Init(2);
             Orchestrator.Instance.liaison.SetPlayers(2);
         }

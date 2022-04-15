@@ -9,58 +9,58 @@ namespace Scenes
         public float sensitivity = 0.001f;
         public float moveSensitivity = 0.1f;
         public float min = 1;
-        [SerializeField] private Camera _camera;
+        [SerializeField] private new Camera camera;
         private Transform _cameraTransform;
         void Update()
         {
-            float sensitivity = this.sensitivity;
-            float moveSensitivity = this.moveSensitivity;
+            float level = sensitivity;
+            float f = moveSensitivity;
             if (Input.GetKey(KeyCode.LeftControl))
             {
-                sensitivity *= 0.1f;
-                moveSensitivity *= 0.1f;
+                level *= 0.1f;
+                f *= 0.1f;
             }
             if (Input.GetKey(KeyCode.Minus))
             {
-                zoomLevel += sensitivity;
+                zoomLevel += level;
             }
             else if(Input.GetKey(KeyCode.Equals))
             {
-                zoomLevel -= sensitivity;
+                zoomLevel -= level;
             }
             if (zoomLevel < min)
                 zoomLevel = min;
-            _camera.orthographicSize = zoomLevel;
+            camera.orthographicSize = zoomLevel;
 
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 Vector3 position = _cameraTransform.position;
-                position.x -= moveSensitivity;
+                position.x -= f;
                 _cameraTransform.position = position;
             }
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 Vector3 position = _cameraTransform.position;
-                position.x += moveSensitivity;
+                position.x += f;
                 _cameraTransform.position = position;
             }
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 Vector3 position = _cameraTransform.position;
-                position.y += moveSensitivity;
+                position.y += f;
                 _cameraTransform.position = position;
             }
             if (Input.GetKey(KeyCode.DownArrow))
             {
                 Vector3 position = _cameraTransform.position;
-                position.y -= moveSensitivity;
+                position.y -= f;
                 _cameraTransform.position = position;
             }
         }
 
         private void Start()
         {
-            _cameraTransform = _camera.transform;
+            _cameraTransform = camera.transform;
         }
     }
 }

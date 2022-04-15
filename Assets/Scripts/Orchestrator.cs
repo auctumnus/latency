@@ -32,12 +32,20 @@ namespace Scenes
             Rerender();
         }
 
+        public void Start()
+        {
+            willUpdate = 2;
+        }
+
         public void Update()
         {
             if(willUpdate >= 0)
                 willUpdate -= 1;
             if (willUpdate == 0)
+            {
                 icons.Check();
+                Rerender();
+            }
         }
 
         public Color GetColor(int delay)
