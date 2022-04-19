@@ -1970,6 +1970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bc92ecd9814ec1891e5c2a9f20437f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  messagePrefab: {fileID: 2227547488815920136, guid: 9f3e4a44f57a1ac418fa76bb78316bed, type: 3}
   currentPlayer: 0
   numPlayers: 2
   delay: 0
@@ -2125,7 +2126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1827800176
 RectTransform:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ namespace Scenes
 {
     public class PlayerInput : MonoBehaviour
     {
+        [SerializeField] private GameObject messagePrefab;
         private List<(int, int)> _playerPos = new();
         public int currentPlayer;
         [SerializeField] private int numPlayers;
@@ -15,15 +16,28 @@ namespace Scenes
         public int delay;
         private Command _table;
         public Icons icons;
+        private List<int> _placeCD = new();
+        private List<GameObject> messages = new();
+        public const int PMOVE_CD = 10;
 
         [SerializeField] private Camera camera;
         private bool willAcceptInput;
         private void Start()
         {
             _playerPos.Add((9, 0));
+            _placeCD.Add(PMOVE_CD);
             _playerPos.Add((9, 18));
+            _placeCD.Add(PMOVE_CD);
             Orchestrator.Instance.commandProcessor.Init(2);
             Orchestrator.Instance.liaison.SetPlayers(2);
+            messages.Add(Orchestrator.Instance.liaison.Create(messagePrefab));
+            Orchestrator.Instance.liaison.currentPlayer = 1;
+            messages.Add(Orchestrator.Instance.liaison.Create(messagePrefab));
+            Orchestrator.Instance.liaison.currentPlayer = 0;
+            foreach (GameObject message in messages)
+            {
+                message.SetActive(false);
+            }
         }
         private void Update()
         {
@@ -45,6 +59,16 @@ namespace Scenes
                 Orchestrator.Instance.Rerender();
             }
 
+            if (Input.GetKeyDown(KeyCode.P) && _placeCD[currentPlayer] <= 0)
+            {
+                Vector2 position = camera.ScreenToWorldPoint(Input.mousePosition);
+                int x = (int) Math.Round(position.x);
+                int y = (int) Math.Round(position.y);
+                _playerPos[currentPlayer] = (x, y);
+                _placeCD[currentPlayer] = PMOVE_CD;
+                messages[currentPlayer].SetActive(false);
+                Rerender();
+            }
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 SwitchControl();
@@ -76,7 +100,6 @@ namespace Scenes
                     Vector2 size = ((RectTransform) transform1).rect.size / 2 * transform1.localScale.x;
                     size.y = -size.y;
                     transform1.position = ((Vector2) Input.mousePosition) +  size;
-                    //menu.transform.position = Input.mousePosition; // changes its position. 
                 }
             }
         }
@@ -108,10 +131,17 @@ namespace Scenes
             queue = new List<Command>();
             if (currentPlayer == 0)
             {
+                for (int i = 0; i < _placeCD.Count; i++)
+                    _placeCD[i] -= 1;
                 Orchestrator.Instance.NewTurn();
             }
             icons.Clear();
             delay = 0;
+            for (int i = 0; i < _placeCD.Count; i++)
+            {
+                if(_placeCD[i] <= 0)
+                    messages[i].SetActive(true);
+            }
             Orchestrator.Instance.Rerender();
         }
         public void StartOrder(int x, int y, Action payload)
