@@ -7,7 +7,6 @@ namespace Scenes
     public class GridController: MonoBehaviour
     {
         public const int GridSize = 18;
-
         private readonly Unit[,] _units = new Unit[GridSize, GridSize];
         private readonly List<Unit> _unitQueue = new();
         private readonly Tile[,] _tiles = new Tile[GridSize, GridSize];
