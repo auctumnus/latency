@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6677899516961427546}
   - component: {fileID: 8060504321739680321}
-  - component: {fileID: 8620386253881813535}
+  - component: {fileID: 7166768952360256900}
   m_Layer: 0
   m_Name: Artillery
   m_TagString: Untagged
@@ -171,7 +171,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8620386253881813535
+--- !u!114 &7166768952360256900
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,20 +180,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 4184057387929912721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e184ba36e4538747a1139afe73f7378, type: 3}
+  m_Script: {fileID: 11500000, guid: c6425590ec15b4429b33ac182bbd2db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 8060504321739680321}
-  x: 7
-  y: 2
-  damage: 2
+  _renderer: {fileID: 1544917647735490734}
+  x: 0
+  y: 0
+  damage: 10
   health: 5
   HealthText: {fileID: 2431673820033763015}
   owner: 0
   battleReady: 0
   hunkeredDown: 0
-  staminaCapacity: 2
-  currentStamina: 2
+  staminaCapacity: 1
+  currentStamina: 1
 --- !u!1 &6523646296526540029
 GameObject:
   m_ObjectHideFlags: 0
