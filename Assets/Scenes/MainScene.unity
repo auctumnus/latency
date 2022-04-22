@@ -206,7 +206,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 678742622}
   m_HandleRect: {fileID: 678742621}
   m_Direction: 0
-  m_Value: 0.00000008202341
+  m_Value: 0.00000002734114
   m_Size: 0.4427135
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -413,6 +413,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scout
       objectReference: {fileID: 0}
+    - target: {fileID: 7729793300102667795, guid: 2ebd34d3cbad0904d8e5ab0eaf3db7f2, type: 3}
+      propertyPath: HealthText
+      value: 
+      objectReference: {fileID: 1863383796}
     - target: {fileID: 8363649548759644631, guid: 2ebd34d3cbad0904d8e5ab0eaf3db7f2, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2259,6 +2263,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827800175}
   m_CullTransparentMesh: 1
+--- !u!114 &1863383796 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8293949610335486274, guid: 2ebd34d3cbad0904d8e5ab0eaf3db7f2, type: 3}
+  m_PrefabInstance: {fileID: 219692693}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2093263120
 GameObject:
   m_ObjectHideFlags: 0
