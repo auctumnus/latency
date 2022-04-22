@@ -246,7 +246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1011523709381285855}
   - component: {fileID: 4429752818650901956}
-  - component: {fileID: 7729793300102667795}
+  - component: {fileID: 8432592428503771054}
   m_Layer: 0
   m_Name: Scout
   m_TagString: Untagged
@@ -322,7 +322,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7729793300102667795
+--- !u!114 &8432592428503771054
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -331,17 +331,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 7545164659659817492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6425590ec15b4429b33ac182bbd2db9, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a2a2ef52bc24ad597bf1f18e25b15f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 0}
   x: 0
   y: 0
-  damage: 0
-  health: 0
-  HealthText: {fileID: 0}
+  damage: 2
+  health: 5
+  HealthText: {fileID: 8293949610335486274}
   owner: 0
   battleReady: 0
   hunkeredDown: 0
   staminaCapacity: 1
   currentStamina: 1
+  staminaCapacity: 2
+  currentStamina: 2
+  damage: 2
+  health: 5
