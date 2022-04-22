@@ -101,8 +101,8 @@ MonoBehaviour:
   _renderer: {fileID: 8552855979026295307}
   x: 0
   y: 0
-  damage: 0
-  health: 0
+  damage: 4
+  health: 10
   HealthText: {fileID: 4094469973727086221}
   owner: 0
   battleReady: 0
