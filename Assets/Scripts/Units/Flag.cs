@@ -14,7 +14,8 @@ public class Flag : Unit
 
     public void EndGame()
     {
-        
+        Orchestrator.Instance.player.disableInput();
+        Orchestrator.Instance.GameOverScreen.SetActive(true);
     }
 
 
