@@ -22,6 +22,11 @@ namespace Scenes
 
         [SerializeField] private Camera camera;
         private bool willAcceptInput;
+
+        public void disableInput() {
+            willAcceptInput = false;
+        }
+
         private void Start()
         {
             _playerPos.Add((9, 0));

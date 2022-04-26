@@ -24,6 +24,8 @@ namespace Scenes
         public int willUpdate;
         public GameObject panel;
 
+        public GameObject GameOverScreen;
+
         public Color[] colors; // colors, corresponding to delay
         public int colorBias = 10; // the bias
         public void NewTurn()
