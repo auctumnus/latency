@@ -57,18 +57,13 @@ public class Artillery : Unit
     
     public override bool Attack(int x,  int y, Unit other)
     {
+        Debug.Log("ATTACKING");
         currentStamina -= 1;
-
-        var dx = Math.Abs(this.x - x);
-        var dy = Math.Abs(this.y - y);
-        if (dx > 2 && dy > 2 && dx < 6 && dy < 6) {
-            battleReady = true;
-            if (currentStamina == 0) {
-                other.ReceiveDamage((int) Math.Floor(damage * 1.5));
-            } else {
-                other.ReceiveDamage(damage);
-            }
-            return other.health <= 0;
+        battleReady = true;
+        if (other.currentStamina == 0) { 
+            other.ReceiveDamage((int) Math.Floor(damage * 1.5));
+        } else { 
+            other.ReceiveDamage(damage);
         }
         return false;
     }
@@ -77,8 +72,8 @@ public class Artillery : Unit
     {
         var dx = Math.Abs(this.x - x);
         var dy = Math.Abs(this.y - y);
-
-        return currentStamina > 0 && dx > 2 && dy > 2 && dx < 6 && dy < 6;
+        Debug.Log("Can attack: " + (currentStamina > 0 && (dx >= 2 || dy >= 2) && dx <= 6 && dy <= 6));
+        return currentStamina > 0 && (dx >= 2 || dy >= 2) && dx <= 6 && dy <= 6;
     }
     public override void ReceiveDamage(int damage)
     {

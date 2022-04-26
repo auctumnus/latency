@@ -343,8 +343,8 @@ MonoBehaviour:
   owner: 0
   battleReady: 0
   hunkeredDown: 0
-  staminaCapacity: 1
-  currentStamina: 1
+  staminaCapacity: 2
+  currentStamina: 2
   staminaCapacity: 2
   currentStamina: 2
   damage: 2

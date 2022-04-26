@@ -64,20 +64,20 @@ namespace Scenes.Actions
 
             if (unit.CanAttack(x, y))
             {
-                unit.Attack(x, y, otherUnit);
-            }
+                bool willMove = unit.Attack(x, y, otherUnit);
+                if(otherUnit.health <= 0)
+                    liaison.Delete(otherUnit.gameObject);
+                if (willMove)
+                {
+                    gc.MoveUnit(unit.x, unit.y, x, y);
+                    unit.x = x;
+                    unit.y = y;
+                    unit.Rerender();
+                }
+                if(unit.health <= 0) 
+                    liaison.Delete(unit.gameObject);
 
-            if (otherUnit.health <= 0)
-            {
-                liaison.Delete(otherUnit.gameObject);
-                gc.MoveUnit(unit.x, unit.y, x, y);
-                unit.x = x;
-                unit.y = y;
-                unit.Rerender();
             }
-
-            if(unit.health <= 0) 
-                liaison.Delete(unit.gameObject);
             liaison.Delete(arrow.gameObject);
             liaison.Delete(tip.gameObject);
         }
