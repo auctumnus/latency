@@ -20,9 +20,9 @@ public class Artillery : Unit
     {
         battleReady = false;
         if(other.currentStamina == 0) {
-            other.ReceiveDamage(damage);
+            other.ReceiveDamage(damage, this);
         } else {
-            other.ReceiveDamage((int) Math.Floor(damage * 0.5));
+            other.ReceiveDamage((int) Math.Floor(damage * 0.5), this);
         }
         
         // other.Defend(this);
@@ -33,13 +33,13 @@ public class Artillery : Unit
     {
         if (!other.battleReady)
         {
-            other.ReceiveDamage((int) Math.Floor(damage * 1.5));
+            other.ReceiveDamage((int) Math.Floor(damage * 1.5), this);
         }
         else if (currentStamina == 0)
         {
-            other.ReceiveDamage((int) Math.Floor(damage * 0.5));
+            other.ReceiveDamage((int) Math.Floor(damage * 0.5), this);
         } else {
-            other.ReceiveDamage(damage);
+            other.ReceiveDamage(damage, this);
         }
     }
 
@@ -61,9 +61,9 @@ public class Artillery : Unit
         currentStamina -= 1;
         battleReady = true;
         if (other.currentStamina == 0) { 
-            other.ReceiveDamage((int) Math.Floor(damage * 1.5));
+            other.ReceiveDamage((int) Math.Floor(damage * 1.5), this);
         } else { 
-            other.ReceiveDamage(damage);
+            other.ReceiveDamage(damage, this);
         }
         return false;
     }
@@ -75,7 +75,7 @@ public class Artillery : Unit
         Debug.Log("Can attack: " + (currentStamina > 0 && (dx >= 2 || dy >= 2) && dx <= 6 && dy <= 6));
         return currentStamina > 0 && (dx >= 2 || dy >= 2) && dx <= 6 && dy <= 6;
     }
-    public override void ReceiveDamage(int damage)
+    public override void ReceiveDamage(int damage, Unit other)
     {
         health -= damage;
     }

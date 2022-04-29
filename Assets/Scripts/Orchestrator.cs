@@ -1,7 +1,9 @@
 ﻿using System;
 using Scenes.Actions;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.Serialization;
+using Unity.UI;
+using UnityEngine.UI;
 
 namespace Scenes
 {
@@ -24,10 +26,25 @@ namespace Scenes
         public int willUpdate;
         public GameObject panel;
 
-        public GameObject GameOverScreen;
+        [FormerlySerializedAs("GameOverScreen")] public GameObject gameOverScreen;
 
         public Color[] colors; // colors, corresponding to delay
+        public Color[] playerColors;
         public int colorBias = 10; // the bias
+
+        public void GameOver(int winningPlayer)
+        {
+            gameOverScreen.SetActive(true);
+            Image img = gameOverScreen.GetComponent<Image>();
+            img.color = playerColors[winningPlayer];
+        }
+
+        public void SwitchControl(int nextPlayer)
+        {
+            panel.SetActive(true);
+            Image img = panel.GetComponent<Image>();
+            img.color = playerColors[nextPlayer];
+        }
         public void NewTurn()
         {
             commandProcessor.NewTurn();

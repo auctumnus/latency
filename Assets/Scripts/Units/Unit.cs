@@ -68,7 +68,7 @@ public abstract class Unit : MonoBehaviour
     // returns true if the battle was won
     public abstract bool SurpriseAttack(int x, int y, Unit other);
     public abstract void Defend(Unit other);
-    public abstract void ReceiveDamage(int damage);
+    public abstract void ReceiveDamage(int damage, Unit other);
 
     public void NextTurn()
     {

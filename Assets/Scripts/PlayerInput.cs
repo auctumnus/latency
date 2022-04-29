@@ -23,7 +23,7 @@ namespace Scenes
         [SerializeField] private Camera camera;
         private bool willAcceptInput;
 
-        public void disableInput() {
+        public void DisableInput() {
             willAcceptInput = false;
         }
 
@@ -121,13 +121,13 @@ namespace Scenes
         public void SwitchControl()
         {
             willAcceptInput = false;
-            Orchestrator.Instance.panel.SetActive(true);
             Orchestrator.Instance.liaison.NextPlayer();
             currentPlayer++;
             if (currentPlayer == numPlayers)
             {
                 currentPlayer = 0;
             }
+            Orchestrator.Instance.SwitchControl(currentPlayer);
             foreach (Command cmd in queue)
             {
                 if(cmd != null)

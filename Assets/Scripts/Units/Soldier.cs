@@ -17,9 +17,9 @@ public class Soldier : Unit
         battleReady = false;
         if (!other.hunkeredDown) {
             if(other.currentStamina == 0) {
-                other.ReceiveDamage(damage);
+                other.ReceiveDamage(damage, this);
             } else {
-                other.ReceiveDamage((int) Math.Floor(damage * 0.5));
+                other.ReceiveDamage((int) Math.Floor(damage * 0.5), this);
             }
         }
         other.Defend(this);
@@ -30,13 +30,13 @@ public class Soldier : Unit
     {
         if (!other.battleReady)
         {
-            other.ReceiveDamage((int) Math.Floor(damage * 1.5));
+            other.ReceiveDamage((int) Math.Floor(damage * 1.5), this);
         }
         else if (currentStamina == 0)
         {
-            other.ReceiveDamage((int) Math.Floor(damage * 0.5));
+            other.ReceiveDamage((int) Math.Floor(damage * 0.5), this);
         } else {
-            other.ReceiveDamage(damage);
+            other.ReceiveDamage(damage, this);
         }
     }
     
@@ -50,11 +50,11 @@ public class Soldier : Unit
         battleReady = true;
         if (other.hunkeredDown)
         {
-            other.ReceiveDamage((int) Math.Floor(damage * 0.5));
+            other.ReceiveDamage((int) Math.Floor(damage * 0.5), this);
         } else if (currentStamina == 0) {
-            other.ReceiveDamage((int) Math.Floor(damage * 1.5));
+            other.ReceiveDamage((int) Math.Floor(damage * 1.5), this);
         } else {
-            other.ReceiveDamage(damage);
+            other.ReceiveDamage(damage, this);
         }
         other.Defend(this);
         return other.health <= 0;
@@ -64,7 +64,7 @@ public class Soldier : Unit
     {
         return currentStamina > 0 && math.abs(this.x - x) <= 1 && math.abs(this.y - y) <= 1;
     }
-    public override void ReceiveDamage(int damage)
+    public override void ReceiveDamage(int damage, Unit other)
     {
         health -= damage;
     }
