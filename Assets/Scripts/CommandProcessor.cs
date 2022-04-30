@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Scenes
@@ -21,20 +20,18 @@ namespace Scenes
                     Debug.Log(x);
                     toRemove[i] = x;
                 }
-
                 Debug.Log("Commands length: " + commands.Count);
                 for (int i = commands[player].Count - 1; i >= 0; i--)
                     if (toRemove[i])
                         commands[player].RemoveAt(i);
             }
             Render();
-            
         }
 
         public void Init(int numPlayers)
         {
             for(int i = 0; i < numPlayers; i++)
-            commands.Add(new List<Command>());
+                commands.Add(new List<Command>());
         }
         public void Render()
         {

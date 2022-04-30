@@ -2,7 +2,6 @@
 using Scenes.Actions;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Unity.UI;
 using UnityEngine.UI;
 
 namespace Scenes

@@ -54,7 +54,6 @@ public class Icons: MonoBehaviour
                 Destroy(queue[i]);
                 queue.RemoveAt(i);
             }
-        
     }
     public void Add(Command cmd)
     {
@@ -71,11 +70,3 @@ public class Icons: MonoBehaviour
         queue.Add(obj);
     }
 }
-/*
- * int x = if x == 5 {6} else {x};
- * return match x {
- *  0..=5 => 5,
- *  6..=10 => 10,
- *  _ => 0
- * }
-*/

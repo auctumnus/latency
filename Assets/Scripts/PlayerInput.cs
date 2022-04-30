@@ -40,9 +40,7 @@ namespace Scenes
             messages.Add(Orchestrator.Instance.liaison.Create(messagePrefab));
             Orchestrator.Instance.liaison.currentPlayer = 0;
             foreach (GameObject message in messages)
-            {
                 message.SetActive(false);
-            }
         }
         private void Update()
         {
@@ -75,9 +73,7 @@ namespace Scenes
                 Rerender();
             }
             if (Input.GetKeyDown(KeyCode.Return))
-            {
                 SwitchControl();
-            }
             if (Input.GetMouseButtonDown(1)) // right click opens menu and confirms orders, left click will trigger buttons
             {
                 
@@ -124,15 +120,11 @@ namespace Scenes
             Orchestrator.Instance.liaison.NextPlayer();
             currentPlayer++;
             if (currentPlayer == numPlayers)
-            {
                 currentPlayer = 0;
-            }
             Orchestrator.Instance.SwitchControl(currentPlayer);
             foreach (Command cmd in queue)
-            {
                 if(cmd != null)
-                    Orchestrator.Instance.commandProcessor.Add(cmd);   
-            }
+                    Orchestrator.Instance.commandProcessor.Add(cmd); 
             queue = new List<Command>();
             if (currentPlayer == 0)
             {
@@ -143,10 +135,8 @@ namespace Scenes
             icons.Clear();
             delay = 0;
             for (int i = 0; i < _placeCD.Count; i++)
-            {
                 if(_placeCD[i] <= 0)
                     messages[i].SetActive(true);
-            }
             Orchestrator.Instance.Rerender();
         }
         public void StartOrder(int x, int y, Action payload)
@@ -158,19 +148,15 @@ namespace Scenes
                 icons.Add(c);
             }
             else
-            {
-                _table = new Command(x, y, Math.Max(MinimumLatency(x, y), delay), payload, currentPlayer);  
-            }
+                _table = new Command(x, y, Math.Max(MinimumLatency(x, y), delay), payload, currentPlayer); 
             Rerender();
         }
 
         public void Rerender()
         {
             foreach (Command cmd in queue)
-            {
                 if(cmd != null)
                     cmd.Render();
-            }
         }
     }
 }

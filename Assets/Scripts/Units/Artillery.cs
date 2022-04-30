@@ -7,12 +7,9 @@ using Unity.Mathematics;
 
 public class Artillery : Unit
 {
-    // doesn't give chance to defend
-    // attack differently
-
-
-    public void Start()
+    public override void Start()
     {
+        base.Start();
         Orchestrator.Instance.gridController.AddUnit(x, y, this);
     }
 

@@ -1993,7 +1993,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -4140,7 +4140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1827800176
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4525,11 +4525,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6007906172837671147, guid: f540c0c53e545bd4e842284c47a1acf1, type: 3}
       propertyPath: x
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6007906172837671147, guid: f540c0c53e545bd4e842284c47a1acf1, type: 3}
       propertyPath: y
-      value: 5
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6437630651682715773, guid: f540c0c53e545bd4e842284c47a1acf1, type: 3}
       propertyPath: m_RootOrder
@@ -5202,6 +5202,14 @@ PrefabInstance:
     - target: {fileID: 4605888037021461942, guid: 81088f01526bfd44ba3803bf89b9ef38, type: 3}
       propertyPath: m_Name
       value: p1 flag
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007906172837671147, guid: 81088f01526bfd44ba3803bf89b9ef38, type: 3}
+      propertyPath: x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007906172837671147, guid: 81088f01526bfd44ba3803bf89b9ef38, type: 3}
+      propertyPath: y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6437630651682715773, guid: 81088f01526bfd44ba3803bf89b9ef38, type: 3}
       propertyPath: m_RootOrder
