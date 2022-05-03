@@ -72,6 +72,11 @@ namespace Scenes
                 messages[currentPlayer].SetActive(false);
                 Rerender();
             }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
             if (Input.GetKeyDown(KeyCode.Return))
                 SwitchControl();
             if (Input.GetMouseButtonDown(1)) // right click opens menu and confirms orders, left click will trigger buttons
